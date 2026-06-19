@@ -99,34 +99,6 @@ export const useVoiceAssistant = () => {
     
     console.log('Voice Command Received:', cleanText);
 
-    // 1. Concept Simplification Regex Matches
-    // Matches: "explain photosynthesis", "teach photosynthesis", "photosynthesis samjhao", "what is photosynthesis"
-    const conceptRegexEnglish = /^(?:explain|teach|what is|tell me about|tell about)\s+([\w\s\-]+)$/i;
-    const conceptRegexHindi = /^([\w\s\-]+)\s+(?:samjhao|kya hota hai|samjhaen|kya hai)$/i;
-
-    // 2. Quiz Regex Matches
-    // Matches: "create a quiz", "generate a quiz on gravity", "quiz shuru karo"
-    const quizRegexEnglish = /^(?:create|generate|start)\s+(?:a\s+)?(?:five-question\s+)?quiz(?:\s+on\s+([\w\s\-]+))?$/i;
-    const quizRegexHindi = /^(?:([\w\s\-]+)\s+)?(?:par\s+)?(?:quiz|test)\s+(?:shuru karo|generate karo|karein)$/i;
-
-    // 3. Translation Regex Matches
-    // Matches: "translate this paragraph", "translate hello students into hindi"
-    const translateRegexEnglish = /^translate\s+(.+?)(?:\s+into\s+(hindi|english|hinglish))?$/i;
-    const translateRegexHindi = /^(.+?)\s+(?:ko\s+)?(hindi|english|hinglish)\s+(?:mein\s+)?translate\s+(?:karo|karein)$/i;
-
-    // 4. Activity Regex Matches
-    // Matches: "start a five minute activity", "start a 5 minute group activity on friction"
-    const activityRegexEnglish = /^start\s+(?:a\s+)?(\d+)\s*minute\s+(?:group\s+)?activity(?:\s+on\s+([\w\s\-]+))?$/i;
-    const activityRegexHindi = /^(?:([\w\s\-]+)\s+)?(?:par\s+)?(\d+)\s*minute\s+ki\s+activity\s+shuru\s+karo$/i;
-
-    // 5. Homework Regex Matches
-    const homeworkRegex = /^(?:generate|create|give|show)\s+homework$/i;
-    const homeworkRegexHindi = /^(?:homework|home assignment)\s+(?:de do|karo|banao|generate karo)$/i;
-
-    // 6. Summary Regex Matches
-    const summaryRegex = /^(?:summarize|summary|lesson summary|summarize lesson)$/i;
-    const summaryRegexHindi = /^(?:summary|lesson summary)\s+(?:batao|karo|banao|dikhayein)$/i;
-
     // 7. Repeat Command
     const repeatRegex = /^(?:repeat|repeat explanation|phir se batao|phir se)$/i;
 
