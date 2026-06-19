@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  
+  /* Modern Educational Palette */
+  --color-brand-50: #f0f7ff;
+  --color-brand-100: #e0effe;
+  --color-brand-500: #0284c7;
+  --color-brand-600: #0369a1;
+  --color-brand-700: #075985;
+  --color-brand-dark: #0f172a;
+  
+  --color-accent-50: #ecfdf5;
+  --color-accent-500: #10b981;
+  --color-accent-600: #059669;
+  
+  --animate-wave: wave 1.2s ease-in-out infinite;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1.1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Custom styles and overrides */
+@layer base {
+  html, body {
+    @apply font-sans m-0 p-0 overflow-x-hidden scroll-smooth;
+    background: radial-gradient(circle at 15% 15%, rgba(2, 132, 199, 0.06) 0%, rgba(16, 185, 129, 0.03) 50%, #f8fafc 100%);
+    color: #1e293b;
+    height: 100%;
+  }
+
+  #root {
+    @apply min-h-screen flex flex-col;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Educational grid pattern */
+.grid-bg {
+  background-size: 30px 30px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+}
+
+.dark .grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  @apply bg-white/85 backdrop-blur-lg border border-white/60 shadow-lg shadow-slate-100/60;
+}
+
+.dark .glass-panel {
+  @apply bg-slate-900/75 backdrop-blur-lg border border-slate-800/60 shadow-md;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100 dark:bg-slate-900 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 dark:hover:bg-slate-600 rounded-full transition-colors;
+}
+
+/* Math rendering styling */
+.math-block {
+  @apply font-mono bg-slate-50 dark:bg-slate-800/80 px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700/60 text-center my-3 text-lg font-semibold overflow-x-auto;
+}
+
+/* Keyboard/command highlights */
+.command-badge {
+  @apply font-mono bg-brand-50 text-brand-600 dark:bg-brand-500/10 dark:text-brand-100 px-2 py-0.5 rounded text-xs border border-brand-100 dark:border-brand-500/20 font-bold;
+}
