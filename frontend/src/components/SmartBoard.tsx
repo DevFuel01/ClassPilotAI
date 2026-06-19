@@ -1439,6 +1439,21 @@ export const SmartBoard: React.FC = () => {
                     </p>
                   </div>
 
+                  {/* Dynamic Visuals for specific concepts in chat */}
+                  {(() => {
+                    const chatText = `${smartBoardChatMessage.question} ${smartBoardChatMessage.answer}`.toLowerCase();
+                    if (chatText.includes('photosynthesis')) {
+                      return <div className="flex justify-center p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800"><PhotosynthesisDiagram /></div>;
+                    }
+                    if (chatText.includes('water cycle') || chatText.includes('jal')) {
+                      return <div className="flex justify-center p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800"><WaterCycleDiagram /></div>;
+                    }
+                    if (chatText.includes('gravity') || chatText.includes('gurutva')) {
+                      return <div className="flex justify-center p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800"><GravityDiagram /></div>;
+                    }
+                    return null;
+                  })()}
+
                   {/* AI Answer — large projector-friendly card */}
                   <div className="p-6 rounded-2xl border border-brand-200/40 bg-gradient-to-br from-brand-50/20 to-transparent dark:border-brand-800/30 dark:from-brand-950/20 shadow-sm space-y-3">
                     <div className="flex items-center gap-2.5">
